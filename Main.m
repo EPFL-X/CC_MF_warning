@@ -76,20 +76,20 @@ N_bar=200;
 delete(gcp('nocreate'));
 if isempty(gcp('nocreate'))
     c=parcluster;
-    c.JobStorageLocation = strcat('/scratch/zhang2/test_zhe/', getenv('SLURM_JOB_ID'));
+    c.JobStorageLocation = strcat('/scratch/',getenv('USER'), '/test_zhe/', getenv('SLURM_JOB_ID'));
     Corenum=c.NumWorkers;
     threads=c.NumThreads;
     c.NumThreads = 1;
-    parpool(Corenum);%36
+    parpool(Corenum);
 else
     delete(gcp('nocreate'));
     c=parcluster;
-    c.JobStorageLocation = strcat('/scratch/zhang2/test_zhe/', getenv('SLURM_JOB_ID'));
+    c.JobStorageLocation = strcat('/scratch/', getenv('USER'), '/test_zhe/', getenv('SLURM_JOB_ID'));
     Corenum=c.NumWorkers;
     threads=c.NumThreads;
     c.NumThreads=1;
-    %     c.NumWorkers=Corenum;%
-    parpool(44);%36
+    c.NumWorkers=Corenum;
+    parpool(Corenum);
 end
 
 % Random stream

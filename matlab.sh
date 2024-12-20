@@ -4,18 +4,22 @@
 #SBATCH --nodes 1 
 #SBATCH --ntasks 1
 #SBATCH --cpus-per-task 72
-#SBATCH --time 72:00:00
+#SBATCH --time 01:15:00
 #SBATCH --qos=serial
+#SBATCH --mem=480G
+#SBATCH --exclusive
 
-#SBATCH --partition=bigmem
-#SBATCH --mail-user=ZHE.ZHANG@epfl.ch
-#SBATCH --mail-type=BEGIN
-#SBATCH --mail-type=END
-#SBATCH --error=matlab_%A_%a.err
-#SBATCH --output=matlab_%A_%a.out
+# SBATCH --partition=bigmem
+# SBATCH --mail-user=ZHE.ZHANG@epfl.ch
+# SBATCH --mail-type=BEGIN
+# SBATCH --mail-type=END
+# SBATCH --error=matlab_%A_%a.err
+# SBATCH --output=matlab_%A_%a.out
+
 set -e
 
 ulimit -n 131072
+
 echo STARTING AT `date`
 echo "Slurm Job Id SLURM_ARRAY_JOB_ID is ${SLURM_ARRAY_JOB_ID}"
 
